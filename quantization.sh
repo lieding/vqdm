@@ -1,18 +1,19 @@
 #!/bin/bash
 export CUDA_VISIBLE_DEVICES=0   # or e.g. 0,1,2,3
 NUM_GPUS=`python -c "import torch; print(torch.cuda.device_count(), end=\"\")"`
+DATA_PATH="./output"
 
 python3 main_text2image.py \
-  "stabilityai/stable-diffusion-xl-base-1.0" \
-  pickscore \
-  pickscore \
-  --scheduler ddim \
+  "cagliostrolab/animagine-xl-4.0" \
+  animaginexl4-prompts4Quant \
+  animaginexl4-prompts4Quant \
+  --scheduler ode \
   --guidance_scale 5.0 \
   --calibration_nsamples=256 \
   --evaluation_nsamples=32 \
-  --finetune_nsamples=512 \
+  --finetune_nsamples=300 \
   --xtx_batch_size=4 \
-  --num_inference_steps=50 \
+  --num_inference_steps=32 \
   --relative_mse_tolerance=0.01 \
   --dtype float16 \
   --finetune_lr=0.00001 \

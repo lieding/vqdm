@@ -555,6 +555,7 @@ def get_pipeline(scheduler_name: str, model_path: str, dtype: torch.dtype, devic
         torch_dtype=dtype,
         variant="fp16",
         use_safetensors=True,
+        custom_pipeline="lpw_stable_diffusion_xl",
     ).to(device)
 
     if scheduler_name.lower() == "default":
