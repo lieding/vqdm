@@ -5,8 +5,8 @@ DATA_PATH="./output"
 
 python3 main_text2image.py \
   "cagliostrolab/animagine-xl-4.0" \
-  animaginexl4-prompts4Quant \
-  animaginexl4-prompts4Quant \
+  dataset/animaginexl4_prompts4Quant.csv \
+  dataset/animaginexl4_prompts4Quant.csv \
   --scheduler ode \
   --guidance_scale 5.0 \
   --calibration_nsamples=256 \
@@ -23,7 +23,7 @@ python3 main_text2image.py \
   --out_group_size=1 \
   --in_group_size=8 \
   --beam_size=8\
-  --finetune_batch_size=4 \
+  --finetune_batch_size=2 \
   --local_batch_size=1 \
   --finetune_max_epoch=1 \
   --print_frequency=1 \
@@ -33,5 +33,4 @@ python3 main_text2image.py \
   --eval_step=1 \
   --group_channels \
   --save=$DATA_PATH \
-  --resume \
-  --wandb
+  --resume

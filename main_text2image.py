@@ -550,10 +550,9 @@ def remove_snapshots(args):
 
 
 def get_pipeline(scheduler_name: str, model_path: str, dtype: torch.dtype, device: str = "cuda"):
-    pipe = diffusers.AutoPipelineForText2Image.from_pretrained(
+    pipe = diffusers.StableDiffusionXLPipeline.from_pretrained(
         model_path,
         torch_dtype=dtype,
-        variant="fp16",
         use_safetensors=True,
         custom_pipeline="lpw_stable_diffusion_xl",
     ).to(device)
